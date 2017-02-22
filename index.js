@@ -152,11 +152,17 @@ const shuffleAll = () => {
 var express = require('express')
 var app = express()
 
+app.get('/counts', (req, res) => {
+    res.send({
+        basses: basses.length,
+        leads: leads.length,
+        baris: baris.length,
+        tenors: tenors.length
+    })
+});
+
 app.get('/getRandomQuartets', function (req, res) {
     shuffleAll();
-
-    let result = "BASSES: " + basses.length + "\nLEADS: " + leads.length + "\nBARIS: " + baris.length + "\nTENORS: " + tenors.length;
-    console.log(result);
 
     let quartets = [];
     for ( let i = 0; i < getMaxCount(); i++) {
