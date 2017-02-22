@@ -152,6 +152,8 @@ const shuffleAll = () => {
 var express = require('express')
 var app = express()
 
+app.set('port', (process.env.PORT || 9000));
+
 app.get('/counts', (req, res) => {
     res.send({
         basses: basses.length,
@@ -196,5 +198,6 @@ app.get('/getSingleRandomQuartet', function(req, res) {
 
 app.use(express.static('public'));
 
-app.listen(9000);
-console.log('App started on port 9000...');
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
