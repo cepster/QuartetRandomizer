@@ -38,6 +38,7 @@
                 <th>Bari</th>
                 <th>Tenor</th>
                 <th>Song</th>
+                <th style="width:300px;">Quartet Name</th>
             </tr>
             </thead>
             <tbody id="resultBody">
@@ -60,7 +61,7 @@
                 $.get('/getRandomQuartets', function(quartets) {
                     let number = 1;
                     quartets.forEach(function(quartet){
-                        $('#resultBody').append('<tr><td>' + number++ + '</td><td>' + quartet. bass + '</td><td>' + quartet.lead + '</td><td>' + quartet.bari + '</td><td>' + quartet.tenor + '</td><td>' + quartet.song + '</td></tr>');
+                        $('#resultBody').append('<tr style="height:50px;"><td>' + number++ + '</td><td>' + quartet. bass + '</td><td>' + quartet.lead + '</td><td>' + quartet.bari + '</td><td>' + quartet.tenor + '</td><td>' + quartet.song + '</td><td style="background-color:#f4f4f4;"></td></tr>');
                     });
                 });
             });
