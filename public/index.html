@@ -79,22 +79,12 @@
 
             $.get('/counts', function(countObj) {
                 var output = '<tr>' +
-                             '<td><button class="btn btn-link partDetail" data="basses">' + countObj.basses + '</button></td>' +
-                             '<td><button class="btn btn-link partDetail" data="leads">' + countObj.leads + '</button></td>' +
-                             '<td><button class="btn btn-link partDetail" data="baris">' + countObj.baris + '</button></td>' +
-                             '<td><button class="btn btn-link partDetail" data="tenors">' + countObj.tenors + '</button></td>' +
+                             '<td><button class="btn btn-primary partDetail" data="basses"><span class="glyphicon glyphicon-user"/>&nbsp;' + countObj.basses + '</button> <button class="btn btn-default randomPart" data="basses"><span class="glyphicon glyphicon-refresh"/>&nbsp;Random</button></td>' +
+                             '<td><button class="btn btn-primary partDetail" data="leads"><span class="glyphicon glyphicon-user"/>&nbsp;' + countObj.leads + '</button> <button class="btn btn-default randomPart" data="leads"><span class="glyphicon glyphicon-refresh"/>&nbsp;Random</button></td>' +
+                             '<td><button class="btn btn-primary partDetail" data="baris"><span class="glyphicon glyphicon-user"/>&nbsp;' + countObj.baris + '</button> <button class="btn btn-default randomPart" data="baris"><span class="glyphicon glyphicon-refresh"/>&nbsp;Random</button></td>' +
+                             '<td><button class="btn btn-primary partDetail" data="tenors"><span class="glyphicon glyphicon-user"/>&nbsp;' + countObj.tenors + '</button> <button class="btn btn-default randomPart" data="tenors"><span class="glyphicon glyphicon-refresh"/>&nbsp;Random</button></td>' +
                              '</tr>';
                 $('#countBody').append(output);
-
-                var randomOutput = '<tr>' +
-                             '<td><button class="btn randomPart" data="basses">Random Bass</button></td>' +
-                             '<td><button class="btn randomPart" data="leads">Random Lead</button></td>' +
-                             '<td><button class="btn randomPart" data="baris">Random Bari</button></td>' +
-                             '<td><button class="btn randomPart" data="tenors">Random Tenor</button></td>' +
-                             '</tr>';
-
-                $('#countBody').append(randomOutput);
-
 
                 $('.partDetail').click(function() {
                     var obj = $(this);
