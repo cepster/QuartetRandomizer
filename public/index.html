@@ -8,11 +8,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAmpqaAHx8fACMjIwA4eHhAKenpwDHx8cATU1NALKysgDw8PAA6enpAGhoaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQACCgAAAAAAAAAAAAAACgAAAAEAAAkECQAAAAAAAAAGAAcAAAMAAAAKAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAoIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOH/AADBjwAA4QcAAP0HAAD9hwAA/fcAAP33AAD99wAA/fcAAPz3AAD8BwAA/AcAAP/HAAD//wAA//8AAP//AAA=" rel="icon" type="image/x-icon" />
     <style>
-        /*.partDetail {
-            cursor:pointer;
-            color:blue;
-            text-decoration: underline;
-        }*/
+        .quartet-name {
+            background-color:#f4f4f4;
+        }
     </style>
   </head>
   <body>
@@ -69,9 +67,9 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </div>
+        </div>
+    </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -109,7 +107,7 @@
                 $.get('/getRandomQuartets', function(quartets) {
                     let number = 1;
                     quartets.forEach(function(quartet){
-                        $('#resultBody').append('<tr style="height:50px;"><td>' + number++ + '</td><td>' + quartet. bass + '</td><td>' + quartet.lead + '</td><td>' + quartet.bari + '</td><td>' + quartet.tenor + '</td><td>' + quartet.song + '</td><td style="background-color:#f4f4f4;"></td></tr>');
+                        $('#resultBody').append('<tr style="height:50px;"><td>' + number++ + '</td><td>' + quartet. bass + '</td><td>' + quartet.lead + '</td><td>' + quartet.bari + '</td><td>' + quartet.tenor + '</td><td>' + quartet.song + '</td><td class="quartet-name"></td></tr>');
                     });
                 });
             });
@@ -118,7 +116,7 @@
                 $('#print').prop('disabled', false);
                 $("#resultBody").html('');
                 $.get('/getSingleRandomQuartet', function(quartet) {
-                    $('#resultBody').append('<tr><td>1</td><td>' + quartet. bass + '</td><td>' + quartet.lead + '</td><td>' + quartet.bari + '</td><td>' + quartet.tenor + '</td><td>' + quartet.song + '</td></tr>');
+                    $('#resultBody').append('<tr style="height:50px;"><td>1</td><td>' + quartet. bass + '</td><td>' + quartet.lead + '</td><td>' + quartet.bari + '</td><td>' + quartet.tenor + '</td><td>' + quartet.song + '</td><td class="quartet-name"></td></tr>');
                 });
             });
         });
