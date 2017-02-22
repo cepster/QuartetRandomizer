@@ -163,6 +163,22 @@ app.get('/counts', (req, res) => {
     })
 });
 
+app.get('/basses', (req, res) => {
+    res.send(basses);
+});
+
+app.get('/leads', (req, res) => {
+    res.send(leads);
+});
+
+app.get('/baris', (req, res) => {
+    res.send(baris);
+})
+
+app.get('/tenors', (req, res) => {
+    res.send(tenors);
+});
+
 app.get('/getRandomQuartets', function (req, res) {
     shuffleAll();
 
