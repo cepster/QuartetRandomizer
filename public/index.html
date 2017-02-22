@@ -86,6 +86,16 @@
                              '</tr>';
                 $('#countBody').append(output);
 
+                var randomOutput = '<tr>' +
+                             '<td><button class="btn randomPart" data="basses">Random Bass</button></td>' +
+                             '<td><button class="btn randomPart" data="leads">Random Lead</button></td>' +
+                             '<td><button class="btn randomPart" data="baris">Random Bari</button></td>' +
+                             '<td><button class="btn randomPart" data="tenors">Random Tenor</button></td>' +
+                             '</tr>';
+
+                $('#countBody').append(randomOutput);
+
+
                 $('.partDetail').click(function() {
                     var obj = $(this);
 
@@ -96,6 +106,17 @@
                         list.forEach(function(member) {
                             $('#partListBody').append('<li>' + member + '</li>');
                         });
+                        $('#partList').modal();
+                    });
+                });
+
+                $('.randomPart').click(function() {
+                    var obj = $(this);
+
+                    $('.modal-title').html('Random ' + obj.attr('data'));
+
+                    $.get('/' + obj.attr('data') + 'Random', function(member) {
+                        $('#partListBody').html('<li>' + member + '</li>');
                         $('#partList').modal();
                     });
                 });

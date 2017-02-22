@@ -167,16 +167,36 @@ app.get('/basses', (req, res) => {
     res.send(basses);
 });
 
+app.get('/bassesRandom', (req, res) => {
+    shuffle(basses);
+    res.send(basses[0]);
+});
+
 app.get('/leads', (req, res) => {
     res.send(leads);
 });
 
+app.get('/leadsRandom', (req, res) => {
+    shuffle(leads);
+    res.send(leads[0]);
+});
+
 app.get('/baris', (req, res) => {
     res.send(baris);
-})
+});
+
+app.get('/barisRandom', (req, res) => {
+    shuffle(baris);
+    res.send(baris[0]);
+});
 
 app.get('/tenors', (req, res) => {
     res.send(tenors);
+});
+
+app.get('/tenorsRandom', (req, res) => {
+    shuffle(tenors);
+    res.send(tenors[0]);
 });
 
 app.get('/getRandomQuartets', function (req, res) {
