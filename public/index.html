@@ -6,12 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quartet Randomizer</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
     <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAmpqaAHx8fACMjIwA4eHhAKenpwDHx8cATU1NALKysgDw8PAA6enpAGhoaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQACCgAAAAAAAAAAAAAACgAAAAEAAAkECQAAAAAAAAAGAAcAAAMAAAAKAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAAAAAAAoIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOH/AADBjwAA4QcAAP0HAAD9hwAA/fcAAP33AAD99wAA/fcAAPz3AAD8BwAA/AcAAP/HAAD//wAA//8AAP//AAA=" rel="icon" type="image/x-icon" />
-    <style>
-        .quartet-name {
-            background-color:#f4f4f4;
-        }
-    </style>
   </head>
   <body>
       <div class="container">
@@ -26,7 +22,6 @@
                   </tr>
               </thead>
               <tbody id="countBody">
-
               </tbody>
           </table>
       </div>
@@ -70,68 +65,8 @@
             </div>
         </div>
     </div>
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function(){
-
-            $.get('/counts', function(countObj) {
-                var output = '<tr>' +
-                             '<td><button class="btn btn-primary partDetail" data="basses"><span class="glyphicon glyphicon-user"/>&nbsp;' + countObj.basses + '</button> <button class="btn btn-default randomPart" data="basses"><span class="glyphicon glyphicon-refresh"/>&nbsp;Random</button></td>' +
-                             '<td><button class="btn btn-primary partDetail" data="leads"><span class="glyphicon glyphicon-user"/>&nbsp;' + countObj.leads + '</button> <button class="btn btn-default randomPart" data="leads"><span class="glyphicon glyphicon-refresh"/>&nbsp;Random</button></td>' +
-                             '<td><button class="btn btn-primary partDetail" data="baris"><span class="glyphicon glyphicon-user"/>&nbsp;' + countObj.baris + '</button> <button class="btn btn-default randomPart" data="baris"><span class="glyphicon glyphicon-refresh"/>&nbsp;Random</button></td>' +
-                             '<td><button class="btn btn-primary partDetail" data="tenors"><span class="glyphicon glyphicon-user"/>&nbsp;' + countObj.tenors + '</button> <button class="btn btn-default randomPart" data="tenors"><span class="glyphicon glyphicon-refresh"/>&nbsp;Random</button></td>' +
-                             '</tr>';
-                $('#countBody').append(output);
-
-                $('.partDetail').click(function() {
-                    var obj = $(this);
-
-                    $('.modal-title').html('Members: ' + obj.attr('data'));
-
-                    $.get('/' + obj.attr('data'), function(list) {
-                        $('#partListBody').html('');
-                        list.forEach(function(member) {
-                            $('#partListBody').append('<li>' + member + '</li>');
-                        });
-                        $('#partList').modal();
-                    });
-                });
-
-                $('.randomPart').click(function() {
-                    var obj = $(this);
-
-                    $('.modal-title').html('Random ' + obj.attr('data'));
-
-                    $.get('/' + obj.attr('data') + 'Random', function(member) {
-                        $('#partListBody').html('<li>' + member + '</li>');
-                        $('#partList').modal();
-                    });
-                });
-            });
-
-            $('#randomize').click(function() {
-                $('#print').prop('disabled', false);
-                $("#resultBody").html('');
-                $.get('/getRandomQuartets', function(quartets) {
-                    let number = 1;
-                    quartets.forEach(function(quartet){
-                        $('#resultBody').append('<tr style="height:50px;"><td>' + number++ + '</td><td>' + quartet. bass + '</td><td>' + quartet.lead + '</td><td>' + quartet.bari + '</td><td>' + quartet.tenor + '</td><td>' + quartet.song + '</td><td class="quartet-name"></td></tr>');
-                    });
-                });
-            });
-
-            $("#randomizeSingle").click(function() {
-                $('#print').prop('disabled', false);
-                $("#resultBody").html('');
-                $.get('/getSingleRandomQuartet', function(quartet) {
-                    $('#resultBody').append('<tr style="height:50px;"><td>1</td><td>' + quartet. bass + '</td><td>' + quartet.lead + '</td><td>' + quartet.bari + '</td><td>' + quartet.tenor + '</td><td>' + quartet.song + '</td><td class="quartet-name"></td></tr>');
-                });
-            });
-        });
-    </script>
-
+    <script src="main.js"></script>
   </body>
 </html>

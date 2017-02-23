@@ -1,0 +1,15 @@
+.quartet-name {
+    padding:0 !important;
+}
+
+.quartet-name--input {
+    height: 100%;
+    width: 100%;
+    background-color:#f4f4f4;
+    border: 0;
+    padding: 0;
+}
+
+.quartet-row {
+    height: 50px;
+}
