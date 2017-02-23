@@ -40,14 +40,14 @@ $(document).ready(function(){
         $.get('/getRandomQuartets', function(quartets) {
             let number = 1;
             quartets.forEach(function(quartet){
-                $('#resultBody').append('<tr class="quartet-row">' + 
-                                            '<td>' + number++ + '</td>' + 
-                                            '<td>' + quartet. bass + '</td>' + 
-                                            '<td>' + quartet.lead + '</td>' + 
-                                            '<td>' + quartet.bari + '</td>' + 
-                                            '<td>' + quartet.tenor + '</td>' + 
-                                            '<td>' + quartet.song + '</td>' + 
-                                            '<td class="quartet-name"><input type="text" class="quartet-name--input"/></td>' + 
+                $('#resultBody').append('<tr class="quartet-row">' +
+                                            '<td>' + number++ + '</td>' +
+                                            '<td>' + quartet. bass + '</td>' +
+                                            '<td>' + quartet.lead + '</td>' +
+                                            '<td>' + quartet.bari + '</td>' +
+                                            '<td>' + quartet.tenor + '</td>' +
+                                            '<td>' + quartet.song + '</td>' +
+                                            '<td class="quartet-name"><input type="text" class="quartet-name--input"/></td>' +
                                         '</tr>');
             });
         });
@@ -57,15 +57,24 @@ $(document).ready(function(){
         $('#print').prop('disabled', false);
         $("#resultBody").html('');
         $.get('/getSingleRandomQuartet', function(quartet) {
-            $('#resultBody').append('<tr class="quartet-row">' + 
-                                        '<td>1</td>' + 
-                                        '<td>' + quartet. bass + '</td>' + 
-                                        '<td>' + quartet.lead + '</td>' + 
-                                        '<td>' + quartet.bari + '</td>' + 
-                                        '<td>' + quartet.tenor + '</td>' + 
-                                        '<td>' + quartet.song + '</td>' + 
-                                        '<td class="quartet-name"><input type="text" class="quartet-name--input"/></td>' + 
+            $('#resultBody').append('<tr class="quartet-row">' +
+                                        '<td>1</td>' +
+                                        '<td>' + quartet. bass + '</td>' +
+                                        '<td>' + quartet.lead + '</td>' +
+                                        '<td>' + quartet.bari + '</td>' +
+                                        '<td>' + quartet.tenor + '</td>' +
+                                        '<td>' + quartet.song + '</td>' +
+                                        '<td class="quartet-name"><input type="text" class="quartet-name--input"/></td>' +
                                     '</tr>');
+        });
+    });
+
+    $('#randomSong').click(function() {
+        $('.modal-title').html('Random Song');
+
+        $.get('/songsRandom', function(song) {
+            $('#partListBody').html('<li>' + song + '</li>');
+            $('#partList').modal();
         });
     });
 });

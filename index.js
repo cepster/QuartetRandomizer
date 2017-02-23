@@ -199,6 +199,11 @@ app.get('/tenorsRandom', (req, res) => {
     res.send(tenors[0]);
 });
 
+app.get('/songsRandom', (req, res) => {
+    shuffle(songs);
+    res.send(songs[0]);
+});
+
 app.get('/getRandomQuartets', function (req, res) {
     shuffleAll();
 
