@@ -231,7 +231,7 @@ app.get('/getSingleRandomQuartet', function(req, res) {
         lead: getValue(leads, 0),
         bari: getValue(baris, 0),
         tenor: getValue(tenors, 0),
-        song: getValue(songs, 0)
+        song: getValue(songs, 0) + '<br>' + getValue(songs, 1)
     };
 
     res.send(quartet);
