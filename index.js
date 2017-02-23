@@ -13,7 +13,7 @@ const basses = [
     'Mark Ortenburger',
     'Joel Prather',
     'Thomas Keenan',
-    'Lynton Kaufman',
+    // 'Lynton Kaufman',
     'Brian Younger',
     'Carl Sipe',
     'Eli Foreman',
