@@ -46,7 +46,7 @@ $(document).ready(function(){
                                             '<td>' + quartet.lead + '</td>' +
                                             '<td>' + quartet.bari + '</td>' +
                                             '<td>' + quartet.tenor + '</td>' +
-                                            '<td>' + quartet.song + '</td>' +
+                                            '<td class="song">' + quartet.song + '</td>' +
                                             '<td class="quartet-name"><input type="text" class="quartet-name--input"/></td>' +
                                         '</tr>');
             });
@@ -63,7 +63,7 @@ $(document).ready(function(){
                                         '<td>' + quartet.lead + '</td>' +
                                         '<td>' + quartet.bari + '</td>' +
                                         '<td>' + quartet.tenor + '</td>' +
-                                        '<td>' + quartet.song + '</td>' +
+                                        '<td class="song">' + quartet.song + '</td>' +
                                         '<td class="quartet-name"><input type="text" class="quartet-name--input"/></td>' +
                                     '</tr>');
         });
@@ -76,5 +76,13 @@ $(document).ready(function(){
             $('#partListBody').html('<li>' + song + '</li>');
             $('#partList').modal();
         });
+    });
+
+    $('#hideSong').click(function() {
+        if($(this).is(':checked')) {
+            $('.song').hide();
+        } else {
+            $('.song').toggle();
+        }
     });
 });

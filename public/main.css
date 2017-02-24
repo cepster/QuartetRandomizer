@@ -8,7 +8,9 @@
     width: 100%;
     background-color:#f4f4f4;
     border: 0;
-    padding: 0;
+    padding: 0 0 0 10px;
+    font-family: "Lucida Console", Monaco, monospace;
+
 }
 
 .quartet-row {
