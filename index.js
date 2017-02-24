@@ -19,7 +19,7 @@ const basses = [
     'Eli Foreman',
     'Aaron Pedowitz',
     'Kyle Leichter',
-    'Benjamin Israelson',
+    // 'Benjamin Israelson',
 ]
 
 const leads = [
@@ -43,8 +43,8 @@ const leads = [
     'Steve Reen',
     'Bernard Reen',
     'Benjamin Brekke',
-    'Jim Clark',
-    'Scott Veenhuis'
+    // 'Jim Clark',
+    // 'Scott Veenhuis'
 ]
 
 const baris = [
@@ -70,7 +70,7 @@ const baris = [
     'Bari Courts',
     'Stephen II	Reen',
     'Bob Cauley',
-    'Adam Helgeson'
+    // 'Adam Helgeson'
 ];
 
 const tenors = [
@@ -91,7 +91,7 @@ const tenors = [
     'John Reen',
     'Charley Garrett',
     'Niel Johnson',
-    'Mark Halverstadt'
+    // 'Mark Halverstadt'
 ];
 
 const songs = [
