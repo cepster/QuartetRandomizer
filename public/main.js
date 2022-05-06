@@ -18,6 +18,7 @@ $(document).ready(function(){
                 list.forEach(function(member) {
                     $('#partListBody').append('<li>' + member + '</li>');
                 });
+                $('#partListBody').append('<input class="form-control" placeholder="Add New">');
                 $('#partList').modal();
             });
         });
